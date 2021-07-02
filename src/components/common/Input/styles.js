@@ -1,5 +1,5 @@
 import { StyleSheet, TextInput } from "react-native";
-import colors from "../../../theme/colors";
+import colors from "../../../assets/theme/colors";
 
 export default StyleSheet.create ({
         wrapper:{
