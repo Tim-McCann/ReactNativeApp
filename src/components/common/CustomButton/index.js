@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import {View, Text, TextInput, TouchableOpacity, ActivityIndicator} from 'react-native';
-import colors from '../../../theme/colors';
+import colors from '../../../assets/theme/colors';
 import styles from './styles';
 
 const CustomButton = ({title, secondary, primary, danger, disabled, loading, onPress}) => {
