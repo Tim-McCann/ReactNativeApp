@@ -2,15 +2,43 @@ import React from 'react';
 import { useState } from 'react';
 import { View, Text } from 'react-native';
 import RegisterComponent from '../../components/SignUp';
+import envs from '../../config/env';
 
 
 const Register = () => {
     const [form, setForm] = useState({});
     const [errors, setErrors] = useState({});
+    const {BACKEND_URL} = envs;
+
+    console.log('BACKEND_URL :>>', BACKEND_URL);
+    console.log('__DEV__ :>>', __DEV__);
+
 
     const onChange = ({name, value}) => {
         setForm({...form, [name]: value});
-    };
+    
+        if (value !== '') {
+          if (name === 'password') {
+            if (value.length < 6) {
+              setErrors((prev) => {
+                return {...prev, [name]: 'This field needs min 6 characters'};
+              });
+            } else {
+              setErrors((prev) => {
+                return {...prev, [name]: null};
+              });
+            }
+          } else {
+            setErrors((prev) => {
+              return {...prev, [name]: null};
+            });
+          }
+        } else {
+          setErrors((prev) => {
+            return {...prev, [name]: 'This field is required'};
+          });
+        }
+      };
 
     const onSubmit = () => {
 

@@ -7,7 +7,9 @@ import Input from '../../components/common/Input';
 import { LOGIN } from '../../constants/routeNames';
 import styles from './styles';
 
-const RegisterComponent = (onSubmit, onChange, form, errors) => {
+
+
+const RegisterComponent = ({onSubmit, onChange, form, errors}) => {
 
     const {navigate}= useNavigation();
 
@@ -28,7 +30,6 @@ const RegisterComponent = (onSubmit, onChange, form, errors) => {
                     label="First Name"
                     iconPosition="right"
                     placeholder="Enter first name"
-                    
                     onChangeText={(value) => {
                         onChange({name: 'firstName', value});
                       }}
