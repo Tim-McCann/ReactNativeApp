@@ -27,7 +27,7 @@ const RegisterComponent = ({onSubmit, onChange, form, errors, error, loading, })
                 </Text>
                 <View style={styles.form}>
 
-                {error.error && <Text>{error.error}</Text>}
+                {error?.error && <Text>{error?.error}</Text>}
                 
                     <Input
                     label="First Name"
