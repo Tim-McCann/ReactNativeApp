@@ -9,7 +9,7 @@ import styles from './styles';
 
 
 
-const RegisterComponent = ({onSubmit, onChange, form, errors}) => {
+const RegisterComponent = ({onSubmit, onChange, form, errors, error, loading, }) => {
 
     const {navigate}= useNavigation();
 
@@ -26,6 +26,9 @@ const RegisterComponent = ({onSubmit, onChange, form, errors}) => {
                     Create a free account    
                 </Text>
                 <View style={styles.form}>
+
+                {error.error && <Text>{error.error}</Text>}
+                
                     <Input
                     label="First Name"
                     iconPosition="right"
@@ -33,7 +36,7 @@ const RegisterComponent = ({onSubmit, onChange, form, errors}) => {
                     onChangeText={(value) => {
                         onChange({name: 'firstName', value});
                       }}
-                    error={errors.firstName}
+                      error={errors.firstName || error?.firstName?.[0]}
                     
                     />
                      <Input
@@ -43,7 +46,7 @@ const RegisterComponent = ({onSubmit, onChange, form, errors}) => {
                     onChangeText={(value) =>{
                         onChange({name:"lastName", value})
                     }}
-                    error={errors.lastName}
+                    error={errors.lastName || error?.lastName?.[0]}
                     />
                      <Input
                     label="Email"
@@ -52,7 +55,7 @@ const RegisterComponent = ({onSubmit, onChange, form, errors}) => {
                     onChangeText={(value) =>{
                         onChange({name:"email", value})
                     }}
-                    error={errors.email}
+                    error={errors.email || error?.email?.[0]}
                     />
                      <Input
                     label="Username"
@@ -61,7 +64,7 @@ const RegisterComponent = ({onSubmit, onChange, form, errors}) => {
                     onChangeText={(value) =>{
                         onChange({name:"userName", value})
                     }}
-                    error={errors.userName}
+                    error={errors.userName || error?.userName?.[0]}
                     />
 
                     <Input
@@ -73,12 +76,18 @@ const RegisterComponent = ({onSubmit, onChange, form, errors}) => {
                     onChangeText={(value) =>{
                         onChange({name:"password", value})
                     }}
-                    error={errors.password}
+                    error={errors.password || error?.password?.[0]}
                     />
 
                  </View>
-
-                <CustomButton onPress={onSubmit} primary title="Submit" />
+                    {console.log('error', error)}
+                <CustomButton 
+                loading={loading}
+                onPress={onSubmit} 
+                disabled={loading}
+                primary 
+                title="Submit"
+                 />
 
                 <View style={styles.createSection}>
                     
