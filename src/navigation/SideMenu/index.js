@@ -4,13 +4,17 @@ import styles from './styles';
 import Container from '../../components/common/Container';
 import { SETTINGS } from '../../constants/routeNames';
 import logoutUser from '../../context/actions/auth/logoutUser';
+import IonIcon from 'react-native-vector-icons/Ionicons';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+
+
 
 const SideMenu = ({navigation, authDispatch}) => {
 
     const handleLogout = () => {
 
         navigation.toggleDrawer();
-        Alert.alert("Logout", "Are you shure you want to logout?", [
+        Alert.alert("Logout", "Are you sure you want to logout?", [
             {
                 text: "Cancel",
                 onPress:() => {},
@@ -25,12 +29,12 @@ const SideMenu = ({navigation, authDispatch}) => {
     };
 
     const menuItems = [
-        {icon:<Text>T</Text>,
+        {icon:<IonIcon name="md-settings-sharp" size={20}></IonIcon>,
          name:"Settings", 
          onPress: () => {
             navigation.navigate(SETTINGS);
         }},
-        {icon:<Text>T</Text>, 
+        {icon:<MaterialIcon name="logout" size={21}></MaterialIcon>, 
          name:"Logout",
          onPress: handleLogout
         },
