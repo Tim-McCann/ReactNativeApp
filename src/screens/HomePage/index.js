@@ -13,7 +13,7 @@ const HomePage = () => {
                 onPress={() => {
                     toggleDrawer();
             }}>
-                <MaterialIcon style={{padding: 10}} size={30} name="menu" />
+                <MaterialIcon style={{padding: 15}} size={30} name="menu" />
             </TouchableOpacity>})
     }, []);
     return (
